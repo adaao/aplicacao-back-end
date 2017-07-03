@@ -9,12 +9,12 @@ import java.sql.*;
 
 public class BackEndTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         System.out.println("Rodando!");
-        System.out.println("Estabelecendo conexão...");
-        Connection conn = ConnectionFactory.getConnetion();
-        if (conn != null){
-            System.out.println("Conexão estabelecida.");
+        try(Connection conn = ConnectionFactory.getConnetion();){
+            System.out.println("Conexão estabelecida");
+        }catch(ClassNotFoundException | SQLException e){
+                throw new RuntimeException(e);
         }
           
     }
