@@ -16,12 +16,10 @@ public class BackEndTest {
         Customer customer = new Customer();
         CustomerDAO customerDao = new CustomerDAO();
         
-        
-        customer.setCostumerId(1L);
-        customer.setCustomerName("\'daao\'");
-        customer.setCnpjCpf("\'5805089890\'");
-        customer.setIsActive("\'y\'");
-        customer.setVlTotal(1);
+        customer.setCustomerName("Adaão");
+        customer.setCnpjCpf("33333344466");
+        customer.setIsActive(1);
+        customer.setVlTotal(2345.43);
         
         customerDao.add(customer);
         

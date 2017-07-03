@@ -5,17 +5,17 @@ package model.bean;
  * @author adaao
  */
 public class Customer {
-    private long costumerId;
+    private int costumerId;
     private String customerName;
     private String cnpjCpf;
-    private String isActive;
+    private int isActive;
     private double vlTotal;
 
-    public long getCustomerId() {
+    public int getCustomerId() {
         return costumerId;
     }
 
-    public void setCostumerId(long costumerId) {
+    public void setCostumerId(int costumerId) {
         this.costumerId = costumerId;
     }
 
@@ -35,11 +35,11 @@ public class Customer {
         this.cnpjCpf = cnpjCpf;
     }
 
-    public String getIsActive() {
+    public int getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(String isActive) {
+    public void setIsActive(int isActive) {
         this.isActive = isActive;
     }
     
