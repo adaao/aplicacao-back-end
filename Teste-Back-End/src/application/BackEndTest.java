@@ -1,10 +1,7 @@
 package application;
 
-import connection.ConnectionFactory;
-import java.sql.*;
 import model.bean.Customer;
 import model.dao.CustomerDAO;
-
 /**
  *
  * @author adaao
@@ -13,15 +10,12 @@ import model.dao.CustomerDAO;
 public class BackEndTest {
 
     public static void main(String[] args) throws ClassNotFoundException{
-        Customer customer = new Customer();
         CustomerDAO customerDao = new CustomerDAO();
         
-        customer.setCustomerName("Adaão");
-        customer.setCnpjCpf("33333344466");
-        customer.setIsActive(1);
-        customer.setVlTotal(2345.43);
+        for (int i=0; i<3000; i++){
+            customerDao.add(CustomerFactory.getCustomer());
+        }
         
-        customerDao.add(customer);
         
         
           
