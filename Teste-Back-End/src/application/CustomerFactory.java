@@ -1,6 +1,5 @@
 package application;
 
-import java.text.DecimalFormat;
 import model.bean.Customer;
 
 /**
@@ -45,7 +44,8 @@ public class CustomerFactory {
         }else{
             isActive = 0;
         }
-         return isActive;        
+        
+        return isActive;        
     }
     
     private static double getVlTotal(){

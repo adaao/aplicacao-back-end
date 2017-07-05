@@ -16,6 +16,7 @@ public class CustomerDAO {
     }
     
     public void add(Customer customer){
+        
         String sql = "INSERT INTO tb_customer_account " +
                      "(cpf_cnpj, nm_customer, is_active, vl_total) " + 
                      "VALUES (?,?,?,?)";
@@ -30,10 +31,40 @@ public class CustomerDAO {
             
             stmt.execute();
             stmt.close();
+            
         }catch(SQLException ex){
             throw new RuntimeException (ex);
         }
     }
     
+    public double getAvgVlTotal(){
+        
+        String sql = "SELECT AVG(vl_total) AS 'Media' " +
+                     "FROM tb_customer_account " +
+                     "WHERE vl_total > 560 " +
+                     "AND id_customer > 1500 " +
+                     "AND id_customer < 2700 ";
+        
+        double avgValue = 0;
+        
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                avgValue = rs.getDouble("Media");
+            }
+            
+            rs.close();
+            stmt.close();
+            
+            return avgValue;
+                  
+        }catch(SQLException ex){
+            throw new RuntimeException (ex);
+        }
+    
+    }
     
 }
