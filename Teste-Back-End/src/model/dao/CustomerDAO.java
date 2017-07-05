@@ -2,6 +2,7 @@ package model.dao;
 
 import connection.ConnectionFactory;
 import java.sql.*;
+import java.util.ArrayList;
 import model.bean.Customer;
 
 /**
@@ -64,7 +65,45 @@ public class CustomerDAO {
         }catch(SQLException ex){
             throw new RuntimeException (ex);
         }
+        
+    }
     
+    public ArrayList getUsedCustomers(){
+        
+        String sql = "SELECT * " +
+                     "FROM tb_customer_account " +
+                     "WHERE vl_total > 560 " +
+                     "AND id_customer > 1500 " +
+                     "AND id_customer < 2700 " +
+                     "ORDER BY vl_total DESC ";
+        
+        try{
+            ArrayList<Customer> customers = new ArrayList<Customer>();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Customer customer = new Customer();
+                
+                customer.setCostumerId(rs.getInt("id_customer"));
+                customer.setCnpjCpf(rs.getString("cpf_cnpj"));
+                customer.setCustomerName(rs.getString("nm_customer"));
+                customer.setIsActive(rs.getInt("is_active"));
+                customer.setVlTotal(rs.getDouble("vl_total"));
+                
+                customers.add(customer);
+            }
+            
+            rs.close();
+            stmt.close();
+            
+            return customers;
+            
+        }catch(SQLException ex){
+            throw new RuntimeException (ex);
+        }
+        
+        
     }
     
 }

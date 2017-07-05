@@ -7,8 +7,9 @@ package application;
 
 public class Main {
 
-    public static void main(String[] args){
-        System.out.println("Aplicação rodando...");
+    public static void main(String[] args) throws ClassNotFoundException{
+        BackEndTest bet = new BackEndTest();
+        bet.start();
     }
     
 }
